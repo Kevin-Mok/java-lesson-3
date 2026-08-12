@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --container-width: 1100px;
+}
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", "Arial", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", "Consolas", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+p, li {
+  line-height: 1.5;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+button:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
