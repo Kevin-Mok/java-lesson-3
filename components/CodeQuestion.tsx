@@ -70,15 +70,14 @@ export default function CodeQuestion({
         <Hint hint={hint} open={questionState.hintRevealed} onOpen={onRevealHint} />
         <button
           type="button"
-          disabled={!questionState.checkAttempted}
           onClick={onRevealSolution}
           className={`rounded-md border px-3 py-2 text-sm transition ${
-            questionState.checkAttempted
-              ? "border-amber-400 hover:bg-amber-400/20"
-              : "cursor-not-allowed border-slate-700 text-slate-500"
+            questionState.solutionRevealed
+              ? "border-amber-400 bg-amber-950/40 hover:bg-amber-900"
+              : "border-amber-400 hover:bg-amber-400/20"
           }`}
         >
-          Compare with model answer
+          {questionState.solutionRevealed ? "Hide model answer" : "Compare with model answer"}
         </button>
       </div>
       <div aria-live="polite" className="space-y-2">

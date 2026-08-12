@@ -165,7 +165,7 @@ export function useLessonState(lessons: LessonSection[]): LessonStateApi {
       ...current,
       revealedSolutions: {
         ...current.revealedSolutions,
-        [questionId]: true
+        [questionId]: !current.revealedSolutions[questionId]
       }
     }));
   }, [hydrateSectionCompletion]);
