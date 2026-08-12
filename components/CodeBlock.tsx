@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SyntaxHighlightedCode from "./SyntaxHighlightedCode";
 
 interface CodeBlockProps {
   code: string;
@@ -26,9 +27,7 @@ export default function CodeBlock({ code, fileName }: CodeBlockProps) {
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre className="overflow-x-auto rounded-md border border-slate-700 bg-slate-950 p-3 text-sm">
-        <code>{code}</code>
-      </pre>
+      <SyntaxHighlightedCode code={code} />
     </div>
   );
 }

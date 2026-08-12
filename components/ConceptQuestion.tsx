@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CheckResult } from "@/lib/answer-check";
 import Hint from "./Hint";
 import ModelAnswer from "./ModelAnswer";
+import SyntaxReference from "./SyntaxReference";
 
 interface ConceptQuestionProps {
   id: string;
@@ -42,6 +43,7 @@ export default function ConceptQuestion({
     <section className="space-y-3 rounded-xl border border-slate-700 bg-slate-900/50 p-4">
       <h4 className="text-lg font-semibold text-slate-100">Concept check ({id})</h4>
       <p className="text-slate-200">{prompt}</p>
+      <SyntaxReference prompt={prompt} />
       <label htmlFor={`concept-${id}`} className="sr-only">{prompt}</label>
       <textarea
         id={`concept-${id}`}

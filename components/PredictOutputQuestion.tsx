@@ -5,6 +5,7 @@ import { CheckResult } from "@/lib/answer-check";
 import CodeBlock from "./CodeBlock";
 import Hint from "./Hint";
 import ModelAnswer from "./ModelAnswer";
+import SyntaxReference from "./SyntaxReference";
 
 interface PredictOutputQuestionProps {
   id: string;
@@ -46,6 +47,7 @@ export default function PredictOutputQuestion({
       <h4 className="text-lg font-semibold text-slate-100">Predict the output ({id})</h4>
       <p className="text-slate-200">{prompt}</p>
       <CodeBlock code={javaSnippet} fileName="Sample.java" />
+      <SyntaxReference prompt={javaSnippet} />
       <label htmlFor={`predict-${id}`} className="sr-only">{prompt}</label>
       <textarea
         id={`predict-${id}`}
