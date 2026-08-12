@@ -21,24 +21,18 @@ function inferSyntaxReferences(prompt: string): SyntaxItem[] {
     items.push({
       title: "Constructor syntax",
       code:
-`# Python
-class Robot:
-    def __init__(self, name, battery=100):
-        self.name = name
-        self.battery = battery
-
-// Java
+`// Java
 public class Robot {
-  private final String name;
-  private int battery;
+  private final String model;
+  private int batteryLevel;
 
-  public Robot(String name) {
-    this(name, 100);
+  public Robot(String model) {
+    // overload/delegation pattern
+    this(model, /* initialBattery */);
   }
 
-  public Robot(String name, int battery) {
-    this.name = name;
-    this.battery = battery;
+  public Robot(String model, int batteryLevel) {
+    // constructor overload #2
   }
 }`
     });
@@ -48,18 +42,15 @@ public class Robot {
     items.push({
       title: "Method and return syntax",
       code:
-`# Python
-class Robot:
-    def can_drive(self):
-        return self.battery >= DRIVE_COST
-
-// Java
+`// Java
 public boolean canDrive() {
-  return battery >= DRIVE_COST;
+  // TODO: evaluate preconditions
+  return <boolean_expression>;
 }
 
-public void stop() {
-  // no return value
+public boolean driveStep() {
+  // TODO: check precondition and update state
+  return <boolean_expression>;
 }`
     });
   }
@@ -69,12 +60,10 @@ public void stop() {
       title: "If / branch syntax",
       code:
 `// Java
-if (!canDrive()) {
-  stop();
-  return false;
+if (/* condition */) {
+  // TODO
 } else {
-  battery -= DRIVE_COST;
-  return true;
+  // TODO
 }
 `
     });
@@ -84,14 +73,10 @@ if (!canDrive()) {
     items.push({
       title: "Loop syntax",
       code:
-`# Python
-for step in range(3):
-    if not drive_step():
-        break
-
-// Java
+`// Java
 for (int step = 0; step < 3; step++) {
-  if (!driveStep()) {
+  // TODO: run one step
+  if (/* failed */) {
     break;
   }
 }
@@ -104,9 +89,9 @@ for (int step = 0; step < 3; step++) {
       title: "Array syntax",
       code:
 `// Java
-Motor[] motors = new Motor[] {leftMotor, rightMotor};
+Motor[] motors = new Motor[] { leftMotor, rightMotor };
 for (Motor motor : motors) {
-  motor.stop();
+  // TODO: operate motor
 }
 `
     });
@@ -118,7 +103,7 @@ for (Motor motor : motors) {
       code:
 `// Java
 private static final int DRIVE_COST = 10;
-private int battery = 100;
+private int battery;
 `
     });
   }
@@ -127,12 +112,12 @@ private int battery = 100;
     items.push({
       title: "Java class shape reminder",
       code:
-`public class Robot {
-  // fields
+`// Java
+public class Robot {
+  private final String name;
 
   public Robot(String name, int battery) {
-    this.name = name;
-    this.battery = battery;
+    // assign fields
   }
 }
 `
